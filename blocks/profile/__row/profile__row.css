@@ -1,0 +1,13 @@
+.profile__row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 336px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .profile__row {
+    width: 282px;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,7 @@
+.element {
+  background-color: white;
+  list-style: none;
+  width: 282px;
+  border-radius: 10px;
+  overflow: hidden;
+}

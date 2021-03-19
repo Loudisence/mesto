@@ -1,0 +1,9 @@
+.element__items-like {
+  align-self: baseline;
+  width: 22px;
+  height: 19px;
+  background: url(../../../images/like.svg);
+  background-size: 22px 19px;
+  padding: 0;
+  border: 0;
+}
