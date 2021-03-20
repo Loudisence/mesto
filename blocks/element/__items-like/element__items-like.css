@@ -7,4 +7,10 @@
   padding: 0;
   border: 0;
   outline: none;
+  cursor: pointer;
+  transition: opacity .5s ease;
+}
+
+.element__items-like:hover {
+  opacity: .5;
 }
