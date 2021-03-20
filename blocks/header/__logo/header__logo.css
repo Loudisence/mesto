@@ -2,8 +2,10 @@
   width: 142px;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 880px) {
   .header__logo {
-    margin-left: 27px;
+    padding-top: 28px;
+    padding-left: 27px;
+    max-width: 282px;
   }
 }

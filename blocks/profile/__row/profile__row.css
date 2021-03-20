@@ -5,7 +5,7 @@
   width: 336px;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 880px) {
   .profile__row {
     width: 282px;
     justify-content: center;
