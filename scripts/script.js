@@ -4,8 +4,8 @@ const closePopupBtn = document.querySelector('.popup__button-close');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__field-name');
-let descriptionInput = document.querySelector('.popup__field-description');
+let nameInput = document.querySelector('.popup__field_type_name');
+let descriptionInput = document.querySelector('.popup__field_type_description');
 /* const likeButtons = document.querySelectorAll('.element__items-like');
 
 function likeActive(event) {
@@ -19,6 +19,8 @@ likeButtons.forEach(item => {
 
 function openPopup() {
   popup.classList.add('popup_opened');
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileDescription.textContent;
 }
 
 function closePopup() {
