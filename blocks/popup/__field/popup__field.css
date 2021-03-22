@@ -1,12 +1,22 @@
 .popup__field {
+  margin: 30px 0 0;
   border: 0;
   outline: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   width: 100%;
-  padding-bottom: 13px;
+  padding: 0 0 13px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
 }
 
+.popup__field:nth-of-type(1) {
+  margin: 54px 0 0;
+}
+
+@media (min-width: 320px) and (max-width: 880px) {
+  .popup__field:nth-of-type(1) {
+    margin-top: 75px;
+  }
+}
