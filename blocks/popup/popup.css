@@ -8,4 +8,6 @@
   right: 0;
   color: black;
   background-color: rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: visibility .5s, opacity 0.5s linear;
 }
