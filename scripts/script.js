@@ -4,7 +4,6 @@ const profileEditButton = document.querySelector('.profile__edit');
 const profileCloseButton = profilePopup.querySelector('.popup__button-close');
 const nameInput = profilePopup.querySelector('.popup__field_type_name');
 const descriptionInput = profilePopup.querySelector('.popup__field_type_description')
-const images = document.querySelector('.images');
 
 const cardsPopup = document.querySelector('.popup_type_cards');
 const cardsPopupForm = cardsPopup.querySelector('.popup__form_cards');
@@ -57,6 +56,7 @@ function cardsSubmitHandler(evt) {
 function createCard(cardData) {
   const cardElement = imagesTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
+  const likeButton = cardElement.querySelector('.element__items-like');
 
   cardElement.querySelector('.element__items-name').textContent = cardData.name;
   cardImage.src = cardData.link;
@@ -64,6 +64,10 @@ function createCard(cardData) {
 
 const deleteCard = cardElement.querySelector('.element__delete');
 deleteCard.addEventListener('click', () => cardElement.remove());
+
+  likeButton.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__items-like_active');
+  });
 
 function revealPhoto () {
   imageTitle.textContent = cardData.name;
@@ -84,16 +88,6 @@ initialCards.forEach(elem => {
   imagesList.append(createCard(elem));
 });
 
-const likeButton = document.querySelectorAll('.element__items-like');
-
-function likeActive(event) {
-  const element = event.target;
-  element.classList.toggle('element__items-like_active');
-}
-
-likeButton.forEach(item => {
-  item.addEventListener('click', likeActive);
-});
 
 profileEditButton.addEventListener('click',() => openProfilePopup(profilePopup));
 cardsAddButton.addEventListener('click',() => openPopup(cardsPopup));
