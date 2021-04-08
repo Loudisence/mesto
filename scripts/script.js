@@ -7,7 +7,7 @@ const descriptionInput = profilePopup.querySelector('.popup__field_type_descript
 const images = document.querySelector('.images');
 
 const cardsPopup = document.querySelector('.popup_type_cards');
-const cardsPopupForm = cardsPopup.querySelector('.popup__form_cards');
+const cardsPopupForm = cardsPopup.querySelector('.popup__form-cards');
 const cardsAddButton = document.querySelector('.profile__add');
 const imagesList = document.querySelector('.elements');
 const imagesTemplate = document.querySelector('#image-template').content.querySelector('.element');
