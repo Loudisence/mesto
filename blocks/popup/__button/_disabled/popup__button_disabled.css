@@ -2,5 +2,8 @@
   background-color: transparent;
   cursor: default;
   border: 1px solid #C4C4C4;
+  text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   color: #C4C4C4;
+  font-weight: bold;
+  font-size: 18px;
 }
