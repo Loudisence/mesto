@@ -45,6 +45,8 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
   toggleButtonState(inputList, buttonElement, inactiveButtonClass);
   formElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
+    buttonElement.setAttribute("disabled", true);
+    buttonElement.classList.add(inactiveButtonClass);
   });
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {

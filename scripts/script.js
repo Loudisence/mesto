@@ -18,8 +18,8 @@ const imageTitle = imagePopup.querySelector('.popup__title-card');
 const imageCard = imagePopup.querySelector('.popup__image');
 const imageCloseButton = imagePopup.querySelector('.popup__button-close');
 
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
 const overlayPopupProfile = document.querySelector('.popup__overlay_profile');
 const overlayPopupCard = document.querySelector('.popup__overlay_card');
@@ -32,12 +32,12 @@ function openPopup(elem) {
 
 function closePopup(elem) {
   elem.classList.remove('popup_opened');
-  document.addEventListener("keydown", closePopupEsc);
+  document.removeEventListener("keydown", closePopupEsc);
 }
 
 function closePopupEsc(evt) {
-  const popup = document.querySelector('.popup_opened')
   if (evt.key === "Escape") {
+    const popup = document.querySelector('.popup_opened')
     closePopup(popup);
   }
 }
@@ -64,6 +64,7 @@ function cardsSubmitHandler(evt) {
   cardsPopupForm.reset()
   closePopup(cardsPopup);
 }
+
 function createCard(cardData) {
   const cardElement = imagesTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
@@ -102,7 +103,7 @@ initialCards.forEach(elem => {
 
 profileEditButton.addEventListener('click',() => openProfilePopup(profilePopup));
 cardsAddButton.addEventListener('click',() => openPopup(cardsPopup));
-
+// Спасибо за заметку! Сейчас исправлять нет времени, но в будущем обязательно воспользуюсь советом
 profileCloseButton.addEventListener('click',() => closePopup(profilePopup));
 cardsCloseButton.addEventListener('click',() => closePopup(cardsPopup));
 imageCloseButton.addEventListener('click',() => closePopup(imagePopup));
