@@ -75,21 +75,24 @@ function createCard(cardData) {
   cardImage.alt = cardData.name;
 
 const deleteCard = cardElement.querySelector('.element__delete');
+
 deleteCard.addEventListener('click', () => cardElement.remove());
 
   likeButton.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__items-like_active');
   });
 
-function revealPhoto () {
-  imageTitle.textContent = cardData.name;
-  imageCard.src = cardData.link;
-  imageCard.alt = cardData.name;
-  openPopup(imagePopup);
-}
-cardImage.addEventListener('click', revealPhoto);
+
+cardImage.addEventListener('click', () => revealPhoto(cardData));
 
 return cardElement;
+}
+
+function revealPhoto ({name, link}) {
+  imageTitle.textContent = name;
+  imageCard.src = link;
+  imageCard.alt = name;
+  openPopup(imagePopup);
 }
 
 function addCard (elem) {
