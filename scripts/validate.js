@@ -44,6 +44,7 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement, inactiveButtonClass);
   formElement.addEventListener('submit', function (evt) {
+    // Возможно я делаю не совсем то, что имелось ввиду и если так, прошу подсказки
     evt.preventDefault();
     buttonElement.setAttribute("disabled", true);
     buttonElement.classList.add(inactiveButtonClass);
