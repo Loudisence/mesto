@@ -25,7 +25,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
-    this._element = 0;
+    this._element = null;
   }
 
   _likeCard(cardsLike) {
