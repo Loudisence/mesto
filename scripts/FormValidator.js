@@ -31,9 +31,8 @@ export class FormValidator {
 
   _setEventListeners() {
     this._toggleButtonState();
-    this._formElement.addEventListener('submit', function (evt) {
+    this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      if(!this._submitButton) return;
       this._submitButton.setAttribute("disabled", true);
       this._submitButton.classList.add(this._config.inactiveButtonClass);
     });

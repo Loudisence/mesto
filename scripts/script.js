@@ -39,11 +39,12 @@ const config = {
   templateClass: '.image-template',
 };
 
+const editFormValidator = new FormValidator (config, document.querySelector('.popup__form-profile'));
+editFormValidator.enableValidation();
+const addFormValidator = new FormValidator (config, document.querySelector('.popup__form-cards'));
+addFormValidator.enableValidation();
+
 function openPopup(elem) {
-  const editFormValidator = new FormValidator (config, document.querySelector('.popup__form-profile'));
-  editFormValidator.enableValidation();
-  const addFormValidator = new FormValidator (config, document.querySelector('.popup__form-cards'));
-  addFormValidator.enableValidation();
   elem.classList.add('popup_opened');
   document.addEventListener("keydown", closePopupEsc);
 }
