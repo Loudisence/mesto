@@ -22,19 +22,19 @@ export default class Card {
     return this._element;
   }
 
+  _likeCard(cardsLike) {
+    cardsLike.classList.toggle('element__items-like_active');
+  }
+
   _deleteCard() {
     this._element.remove();
   }
 
-  _likeCard(cardsLike) {
-    cardsLike.classList.toggle('grid-item__like_active');
-  }
-
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => this._revealPhoto(this._title, this._link));
-    const deleteCard = this._element.querySelector('.element__delete');
-    deleteCard.addEventListener('click', () => this._deleteCard());
     const cardsLike = this._element.querySelector('.element__items-like');
     cardsLike.addEventListener('click', () => this._likeCard(cardsLike));
+    const deleteCard = this._element.querySelector('.element__delete');
+    deleteCard.addEventListener('click', () => this._deleteCard());
   };
 };
