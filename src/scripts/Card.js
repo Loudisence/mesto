@@ -1,12 +1,10 @@
-export class Card {
+export default class Card {
   constructor(data, cardSelector, revealPhoto) {
-    this._name = data.name;
+    this._title = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._revealPhoto = revealPhoto;
     this._element = this._getTemplate();
-
-    this._elementImage = this._element.querySelector('.element__image');
   }
 
   _getTemplate() {
@@ -15,28 +13,28 @@ export class Card {
   }
 
   generateCard() {
-    this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
-    this._element.querySelector('.element__items-name').textContent = this._name;
+    this._cardImage = this._element.querySelector('.element__image');
+    this._cardImage.alt = this._title;
+    this._cardImage.src = this._link;
+    this._cardName = this._element.querySelector('.element__items-name');
+    this._cardName.textContent = this._title;
     this._setEventListeners();
-
     return this._element;
   }
 
   _deleteCard() {
     this._element.remove();
-    this._element = null;
   }
 
   _likeCard(cardsLike) {
-    cardsLike.classList.toggle('element__items-like_active');
+    cardsLike.classList.toggle('grid-item__like_active');
   }
 
   _setEventListeners() {
-    this._elementImage.addEventListener('click', () => this._revealPhoto({name: this._name, link: this._link}));
+    this._cardImage.addEventListener('click', () => this._revealPhoto(this._title, this._link));
     const deleteCard = this._element.querySelector('.element__delete');
     deleteCard.addEventListener('click', () => this._deleteCard());
     const cardsLike = this._element.querySelector('.element__items-like');
     cardsLike.addEventListener('click', () => this._likeCard(cardsLike));
   };
-}
+};

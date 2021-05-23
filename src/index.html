@@ -4,16 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css" />
 </head>
 
 <body class="page">
 <header class="header">
-  <img class="header__logo" src="./images/logo.svg" alt="Место" />
+  <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Место" />
 </header>
 <main>
   <section class="profile">
-    <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар" />
+    <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар" />
     <div class="profile__info">
       <div class="profile__row">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -37,9 +36,9 @@
     <button type="button" class="button popup__button-close"></button>
     <h2 class="popup__title">Редактировать профиль</h2>
     <form name="popup-form" class="popup__form popup__form-profile">
-      <input type="text" class="popup__field popup__field_type_name" name="name" id="name" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+      <input type="text" class="popup__field popup__field-input popup__field_type_name" name="name" id="name" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
       <span class='popup__error' id="name-error"></span>
-      <input type="text" class="popup__field popup__field_type_description" placeholder="Описание" name="description" id="description" value="Исследователь океана" minlength="2" maxlength="200" required>
+      <input type="text" class="popup__field popup__field-input popup__field_type_description" placeholder="Описание" name="description" id="description" value="Исследователь океана" minlength="2" maxlength="200" required>
       <span class='popup__error' id="description-error"></span>
       <button type="submit" class="popup__button">Сохранить</button>
     </form>
@@ -52,9 +51,9 @@
     <button type="button" class="button popup__button-close"></button>
     <h2 class="popup__title">Новое место</h2>
     <form name="popup-form" class="popup__form popup__form-cards">
-      <input type="text" class="popup__field popup__field_type_title" id="title" name="title" placeholder="Название" minlength="2" maxlength="30" required>
+      <input type="text" class="popup__field popup__field-input popup__field_type_title" id="title" name="title" placeholder="Название" minlength="2" maxlength="30" required>
       <span class='popup__error' id='title-error'></span>
-      <input type="url" class="popup__field popup__field_type_link" id="link" name="link" placeholder="Ссылка на изображение" required>
+      <input type="url" class="popup__field popup__field-input popup__field_type_link" id="link" name="link" placeholder="Ссылка на изображение" required>
       <span class='popup__error' id='link-error'></span>
       <button type="submit" class="popup__button">Создать</button>
     </form>
@@ -82,7 +81,5 @@
     <button type="button" class="button element__delete"></button>
   </li>
 </template>
-
-<script type="module" src="./scripts/script.js"></script>
 </body>
 </html>
