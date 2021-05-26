@@ -35,14 +35,18 @@ const config = {
 };
 
 
+const generateCard = (item, cardSelection, revealPhoto) => {
+  const card = new Card(item, cardSelection, revealPhoto);
+  return card.generateCard();
+}
+
 
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card(item, ".image-template", (name, link) => {
+    const cardElement = generateCard(item, ".image-template", (name, link) => {
       popupWithImage.open(name, link);
     });
-    const cardElement = card.generateCard();
     cardList.addItem(cardElement);
   }
 }, elementsList);
@@ -51,13 +55,12 @@ cardList.renderItems();
 
 
 const popupCardForm = new PopupWithForm(popupCards, (formInputs) => {
-  const card = new Card({
+  const cardElement = generateCard({
     link: formInputs.link,
     name: formInputs.title
   }, ".image-template", (link, title) => {
     popupWithImage.open(link, title);
   });
-  const cardElement = card.generateCard();
   cardList.prependItem(cardElement);
 })
 popupCardForm.setEventListeners();
