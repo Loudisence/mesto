@@ -1,12 +1,12 @@
 import './index.css';
 
-import Card from "../scripts/Card";
-import {FormValidator} from "../scripts/FormValidator";
-import {initialCards} from "../scripts/initialCards";
-import Section from "../scripts/Section";
-import PopupWithForm from "../scripts/PopupWithForm";
-import PopupWithImage from "../scripts/PopupWithImage";
-import UserInfo from "../scripts/UserInfo";
+import Card from "../components/Card";
+import {FormValidator} from "../components/FormValidator";
+import {initialCards} from "../utils/initialCards";
+import Section from "../components/Section";
+import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
+import UserInfo from "../components/UserInfo";
 
 const profilePopup = document.querySelector('.popup_type_profile');
 const profileEditButton = document.querySelector('.profile__edit');
@@ -34,11 +34,13 @@ const config = {
   templateClass: '.image-template',
 };
 
+
+
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
     const card = new Card(item, ".image-template", (name, link) => {
-      popupWithImage.openPopup(name, link);
+      popupWithImage.open(name, link);
     });
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
@@ -53,7 +55,7 @@ const popupCardForm = new PopupWithForm(popupCards, (formInputs) => {
     link: formInputs.link,
     name: formInputs.title
   }, ".image-template", (link, title) => {
-    popupWithImage.openPopup(link, title);
+    popupWithImage.open(link, title);
   });
   const cardElement = card.generateCard();
   cardList.prependItem(cardElement);
@@ -79,19 +81,17 @@ editFormValidator.enableValidation();
 const userInfo = new UserInfo({nameSelector, descriptionSelector});
 
 profileEditButton.addEventListener("click", (evt) => {
-  evt.preventDefault();
   evt.stopPropagation();
   const profileInfo = userInfo.getUserInfo();
   nameInput.value = profileInfo.name;
   descriptionInput.value = profileInfo.description;
-  popupEditForm.openPopup();
+  popupEditForm.open();
 });
 
 cardsAddButton.addEventListener("click", (evt) => {
   popupFormCards.reset();
-  evt.preventDefault()
   evt.stopPropagation()
   //addFormValidator.resetValidation();
-  popupCardForm.openPopup();
+  popupCardForm.open();
 });
 
