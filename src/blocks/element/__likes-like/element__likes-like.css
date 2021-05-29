@@ -1,16 +1,16 @@
-.element__items-like {
-  align-self: baseline;
+.element__likes-like {
   width: 22px;
   height: 19px;
   background: url(../../../images/like.svg);
-  background-size: 22px 19px;
+  background-size: 100%;
   padding: 0;
   border: 0;
   outline: none;
   cursor: pointer;
   transition: opacity .5s ease;
+  margin-bottom: 3px;
 }
 
-.element__items-like:hover {
+.element__likes-like:hover {
   opacity: .5;
 }

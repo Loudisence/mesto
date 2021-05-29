@@ -50,6 +50,16 @@ export class FormValidator {
     this._setEventListeners(this._formElement);
   }
 
+  removeErrors() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+    })
+  }
+
+  enableButton() {
+    this._submitButton.classList.remove(this._config.inactiveButtonClass);
+  }
+
   _toggleButtonState() {
     const isValid = this._inputList.some((inputElement) => !inputElement.validity.valid);
     if (isValid && this._submitButton) {
