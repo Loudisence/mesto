@@ -181,7 +181,6 @@ function renderLoading(popup, isLoading) {
 
 cardsAddButton.addEventListener('click', function() {
   addFormValidator.removeErrors();
-  addFormValidator.disableButton();
   popupWithFormCards.open();
 });
 
@@ -190,7 +189,6 @@ profileEditButton.addEventListener('click', function() {
   nameInput.value = userData.name;
   descriptionInput.value = userData.description;
   editFormValidator.removeErrors();
-  editFormValidator.enableButton();
   popupWithFormProfile.open();
 })
 

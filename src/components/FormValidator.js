@@ -56,10 +56,6 @@ export class FormValidator {
     })
   }
 
-  enableButton() {
-    this._submitButton.classList.remove(this._config.inactiveButtonClass);
-  }
-
   _toggleButtonState() {
     const isValid = this._inputList.some((inputElement) => !inputElement.validity.valid);
     if (isValid && this._submitButton) {
