@@ -36,7 +36,7 @@ export class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarUrl
+        avatar: avatarUrl,
       })
     })
       .then(this._checkResponse);

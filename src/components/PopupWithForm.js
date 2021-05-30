@@ -14,15 +14,26 @@ export default class PopupWithForm extends Popup  {
     });
     return this._formValues;
   }
+
+  _submit = (evt) => {
+    evt.preventDefault();
+    this._submitForm(this._getInputValues());
+    this.close();
+  }
+
   _setEventListeners() {
     super._setEventListeners();
-    this._form.addEventListener('submit', (ev) => {
-      this._submitForm(this._getInputValues());
-      this.close();
-    });
+    this._form.addEventListener('submit', this._submit);
   }
+
+  _removeEventListeners() {
+    super._removeEventListeners();
+    this._form.removeEventListener('submit', this._submit);
+  }
+
   close() {
     super.close();
     this._form.reset();
   }
+
 }

@@ -6,7 +6,7 @@ import {FormValidator} from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
-import PopupConfirm from "../components/popupConfirm";
+import PopupConfirm from "../components/PopupConfirm";
 import UserInfo from "../components/UserInfo";
 
 import {

@@ -28,5 +28,5 @@ export const elementsList = document.querySelector('.elements');
 
 export const name = document.querySelector('.profile__name');
 export const description = document.querySelector('.profile__description');
-export const avatar = document.querySelector('.profile__photo');
+export const avatar = document.querySelector('.profile__avatar');
 export const imagePopup = document.querySelector('.popup_type_image');
