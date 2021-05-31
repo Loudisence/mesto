@@ -38,6 +38,9 @@ const api = new Api({
   },
 });
 
+
+const userInfo = new UserInfo({name, description, avatar});
+
 const generateCard = (data) => {
   const card = new Card({
     data,
@@ -64,29 +67,34 @@ const generateCard = (data) => {
 
 let cardsList;
 
-api.getInitialCards()
-  .then((data) => {
+Promise.all([
+  api.getInitialCards(),
+  api.getUserInfo()
+]).then(([cardsData, userData]) => {
     cardsList = new Section({
-      data,
-      renderer: (item) => {
-        const cardElement = generateCard(item);
-        cardsList.addItem(cardElement);
-      }
+      data: cardsData,
+      renderer: (item) => {const cardElement = generateCard(item);
+        cardsList.addItem(cardElement);}
     }, elementsList);
     cardsList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+      userId = userData._id;
+      userInfo.setUserInfo(userData);
+}).catch((err) => {
+  console.log(err);
+})
+
+
+
 
 const popupWithFormCards = new PopupWithForm({
-  popupSelector: popupCards,
+  popup: popupCards,
   submitForm: (info) => {
     renderLoading(popupCards, true);
     api.postNewCard(info.title, info.link)
       .then((data) => {
         const cardElement = generateCard(data);
         cardsList.addItem(cardElement);
+        popupWithFormCards.close();
       })
       .catch((err) => {
         console.log(err);
@@ -98,12 +106,13 @@ const popupWithFormCards = new PopupWithForm({
 })
 
 const popupWithFormProfile = new PopupWithForm({
-  popupSelector: popupProfile,
+  popup: popupProfile,
   submitForm: (info) => {
     renderLoading(popupProfile, true);
     api.setUserInfo(info.name, info.description)
       .then((data) => {
         userInfo.setUserInfo(data);
+        popupWithFormProfile.close();
       })
       .catch((err) => {
         console.log(err);
@@ -114,12 +123,13 @@ const popupWithFormProfile = new PopupWithForm({
 })
 
 const popupWithFormAvatar = new PopupWithForm({
-  popupSelector: popupAvatar,
+  popup: popupAvatar,
   submitForm: (info) => {
     renderLoading(popupAvatar, true);
     api.setAvatar(info.avatarUrl)
-      .then((data) => {
-        userInfo.setUserInfo(data);
+      .then((userData) => {
+        userInfo.setUserInfo(userData);
+        popupWithFormAvatar.close();
       })
       .catch((err) => {
         console.log(err)
@@ -132,7 +142,7 @@ const popupWithFormAvatar = new PopupWithForm({
 const popupWithImage = new PopupWithImage(imagePopup);
 
 const popupConfirm = new PopupConfirm({
-  popupSelector: popupConfirmDelete,
+  popup: popupConfirmDelete,
   handleDeleteButtonClick:  () => {
     const cardId = popupConfirm.cardObject._cardId;
     api.deleteCard(cardId)
@@ -155,19 +165,8 @@ const avatarFormValidator = new FormValidator(config, popupFormAvatar);
 avatarFormValidator.enableValidation()
 
 
-
-const userInfo = new UserInfo({name, description, avatar});
-
 let userId;
 
-api.getUserInfo()
-  .then((data) => {
-    userId = data._id;
-    userInfo.setUserInfo(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
 
 function renderLoading(popup, isLoading) {
   const submitButton = popup.querySelector('.popup__button');
@@ -193,6 +192,7 @@ profileEditButton.addEventListener('click', function() {
 })
 
 updateAvatarButton.addEventListener('click', function() {
+  avatarFormValidator.removeErrors();
   popupWithFormAvatar.open();
 })
 
