@@ -63,4 +63,5 @@ export class FormValidator {
       this._submitButton.classList.remove(this._config.inactiveButtonClass);
     }
   };
+
 }

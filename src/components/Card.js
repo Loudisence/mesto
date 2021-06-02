@@ -15,13 +15,13 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.element__image');
-    this._cardImage.alt = this._title;
-    this._cardImage.src = this._link;
     this._cardName = this._element.querySelector('.element__items-name');
     this._delete = this._element.querySelector('.element__delete');
     this._like = this._element.querySelector('.element__likes-like');
     this._counter = this._element.querySelector('.element__likes-counter');
     this._cardName.textContent = this._title;
+    this._cardImage.alt = this._title;
+    this._cardImage.src = this._link;
     this._mayDelete();
     this._setEventListeners();
     return this._element;
@@ -57,6 +57,7 @@ export default class Card {
   }
 
   markUserLikes() {
+    console.log([this._likes, this._userId]);
     if (this._likes.some(person => person._id === this._userId)) {
       this._like.classList.add('element__likes-like_active');
     }
@@ -65,7 +66,6 @@ export default class Card {
   updateLikes() {
     this._counter.textContent = this._likes.length;
   }
-
 
 
   _setEventListeners() {
