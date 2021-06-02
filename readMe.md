@@ -1,7 +1,7 @@
 # Проект 4: Место
 
 ## Ссылка на проект:
-https://loudisence.github.io/mesto/
+https://loudisence.github.io/mesto
 
 
 ### Используемые технологии в проекте:
